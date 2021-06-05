@@ -84,7 +84,7 @@ export class Server{
     }
     exit():void{
         p.printLine();
-        p.printError("Stopping Selina Webserver");
+        p.printError("Stop Webserver");
         p.printLine();
         cli.kill();
         process.exit(0);
@@ -101,7 +101,7 @@ export class Server{
     }
     init():void{
         p.printLine();
-        p.print("Initialize Selina-Webserver " + pkg.version);
+        p.print("Initialize Webserver " + pkg.version);
         this.clearCommands();
         this.addCommand(new Command("exit", "Stop Application", this.exit));
         this.addCommand(new Command("help", "Show Commands", this.help));
@@ -121,7 +121,7 @@ export class Server{
     }
     start():void{
         p.printLine();
-        p.printTitle("Selina-Webserver " + pkg.version);
+        p.printTitle("Start Webserver " + pkg.version);
         this.help();
         this.startCLI();
         p.printLine();
