@@ -1,0 +1,18 @@
+{
+  "name": "selina",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Leo Battaglia",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^15.6.0",
+    "milena": "^0.1.0",
+    "samara": "^0.1.10",
+    "typescript": "^4.2.4"
+  }
+}
