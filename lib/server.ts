@@ -70,7 +70,6 @@ export class Server{
     execute(command:string){
         let executed:Boolean = false;
         for(let cmd of commands){
-            //p.print("VVV: " + cmd.command + "/" + command);
             if(cmd.command === command){
                 cmd.callback();
                 executed = true;
@@ -129,7 +128,6 @@ export class Server{
         cli.send("input");
     }
     startCLI():void{
-        p.print("QQQ: " + __dirname + " // " + __filename);
         cli = cp.fork(__dirname + "/cli");
         cli.on("message", this.execute);
     }
