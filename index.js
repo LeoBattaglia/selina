@@ -13,4 +13,4 @@ exports.Server = exports.Command = void 0;
 var server_1 = require("./lib/server");
 Object.defineProperty(exports, "Command", { enumerable: true, get: function () { return server_1.Command; } });
 Object.defineProperty(exports, "Server", { enumerable: true, get: function () { return server_1.Server; } });
-//# sourceMappingURL=server.js.map
+//# sourceMappingURL=index.js.map

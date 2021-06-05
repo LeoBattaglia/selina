@@ -129,7 +129,7 @@ export class Server{
         cli.send("input");
     }
     startCLI():void{
-        cli = cp.fork('./lib/cli');
+        cli = cp.fork("./cli");
         cli.on("message", this.execute);
     }
     startListener():void{
