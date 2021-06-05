@@ -78,7 +78,7 @@ export class Server{
             }
         }
         if(!executed){
-            p.print("No valid Command: " + command);
+            p.print("Invalid Command: " + command);
         }
         p.printLine();
         cli.send("input");
@@ -129,7 +129,8 @@ export class Server{
         cli.send("input");
     }
     startCLI():void{
-        cli = cp.fork("./cli");
+        p.print("QQQ: " + __dirname + " // " + __filename);
+        cli = cp.fork(__dirname + "/cli");
         cli.on("message", this.execute);
     }
     startListener():void{
