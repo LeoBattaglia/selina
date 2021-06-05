@@ -7,7 +7,7 @@ Run `npm i selina`
 ## Usage
 ```
 const selina = require("selina");
-let server = new Server(false, 0, response);
+let server = new selina.Server(false, 0, response);
 server.init();
 server.start();
 
