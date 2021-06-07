@@ -29,124 +29,124 @@ function response(req:Request):string{
 Note: This Example shows all Methods you need for basic Webserver-Functionality.
 The most Methods in the Server-Class are for internal use only.
 
-##Class: Server
-###Constructor
+## Class: Server
+### Constructor
 constructor(https:Boolean, port:number, responseFunction)
-####Example
+#### Example
 ```
 let server = new Server(false, 80, anyFunction);
 ```
-###Methods
-####addCommand()
+### Methods
+#### addCommand()
 Adds a Command to the Server, if it not already exists.
-#####Parameters:
+##### Parameters:
 - command:Command
-#####Use:
+##### Use:
 ```
 server.addCommand(new Command("command", "Description", anyFunction));
 ```
 
-####clearCommands()
+#### clearCommands()
 Removes all Commands (incl. Default-Commands).
-#####Parameters:
+##### Parameters:
 - NONE
-#####Use:
+##### Use:
 ```
 server.clearCommands();
 ```
 
-####execute()
+#### execute()
 Executes the Callback-Function of a Command. 
-#####Parameters:
+##### Parameters:
 - command:string
-#####Use:
+##### Use:
 ```
 server.execute("command");
 ```
 
-####exit()
+#### exit()
 Shutdown Application.
-#####Parameters:
+##### Parameters:
 - NONE
-#####Use:
+##### Use:
 ```
 server.exit();
 ```
 
-####help()
+#### help()
 Prints all Commands.
-#####Parameters:
+##### Parameters:
 - NONE
-#####Use:
+##### Use:
 ```
 server.help();
 ```
 
-####init()
+#### init()
 Removes all Commands and adds Default-Commands again.
-#####Parameters:
+##### Parameters:
 - NONE
-#####Use:
+##### Use:
 ```
 server.init();
 ```
 
-####setPort()
+#### setPort()
 Sets the Port. When "nr" is 0, the Default is 80 for HTTP or 8000 for HTTPS.
-#####Parameters:
+##### Parameters:
 - nr:number
-#####Use:
+##### Use:
 ```
 server.setPort(80);
 ```
 
-####start()
+#### start()
 Starts the Application
-#####Parameters:
+##### Parameters:
 - NONE
-#####Use:
+##### Use:
 ```
 server.start();
 ```
 
-####startCLI()
+#### startCLI()
 Starts a Child-Process for CLI User-Input.
-#####Parameters:
+##### Parameters:
 - NONE
-#####Use:
+##### Use:
 ```
 server.startCLI();
 ```
 
-####startListener()
+#### startListener()
 Starts the Listener in HTTP- or HTTPS-Mode on defined Port.
-#####Parameters:
+##### Parameters:
 - NONE
-#####Use:
+##### Use:
 ```
 server.startListener();
 ```
 
-####startListener()
+#### startListener()
 Stops the Listener.
-#####Parameters:
+##### Parameters:
 - NONE
-#####Use:
+##### Use:
 ```
 server.stopListener();
 ```
 
-##Class: Command
-###Constructor
+## Class: Command
+### Constructor
 constructor(command:string, description:string, callback)
-####Example
+#### Example
 ```
 let cmd = new Command("ps", "Print Something", printSomething);
 ```
-###Get & Set-Methods
-####command
+### Get & Set-Methods
+#### command
 Command-Text, e.g. "start" or "help". Type: string
-####description
+#### description
 Description-Text which is displayed on Command "help". Type: string
-####callback
+#### callback
 Function to execute when typing a Command. Type: any (Must be a Function to work)
