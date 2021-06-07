@@ -55,19 +55,21 @@ export class Server{
     //Constructor
     constructor(https:Boolean, port:number, responseFunction){
         https = https;
-        this.setPort(port, https);
+        this.setPort(port);
         response = responseFunction;
     }
 
     //Functions
     addCommand(cmd:Command):void{
+
+        //TODO: Check if Command already exists
+
         commands.push(cmd);
     }
     clearCommands():void{
-        //p.print("CLEAR");
         commands = [];
     }
-    execute(command:string){
+    execute(command:string):void{
         let executed:Boolean = false;
         for(let cmd of commands){
             if(cmd.command === command){
@@ -89,9 +91,6 @@ export class Server{
         cli.kill();
         process.exit(0);
     }
-    getPrompt(){
-        return p;
-    }
     help():void{
         p.printLine();
         p.printOption("Commands:")
@@ -108,7 +107,7 @@ export class Server{
         this.addCommand(new Command("start", "Start Listener", this.startListener));
         this.addCommand(new Command("stop", "Stop Listener", this.stopListener));
     }
-    setPort(nr:number, https:Boolean):void{
+    setPort(nr:number):void{
         if(nr < 1){
             if(https){
                 port = 8000;
