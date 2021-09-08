@@ -2,12 +2,14 @@
 export class Response{
     //Declarations
     _data:any;
-    _id:number;
+    _status:number;
     _type:string;
 
     //Constructor
-    constructor(id:number, type:string, data:any){
-
+    constructor(status:number, type:string, data:any){
+        this.status = status;
+        this.type = type;
+        this.data = data
     }
 
     //Get Methods
@@ -15,8 +17,8 @@ export class Response{
         return this._data;
     }
 
-    get id():number{
-        return this._id;
+    get status():number{
+        return this._status;
     }
 
     get type():string{
@@ -27,8 +29,8 @@ export class Response{
     set data(data:any){
         this._data = data;
     }
-    set id(id:number){
-        this._id = id;
+    set status(status:number){
+        this._status = status;
     }
     set type(type:string){
         this._type = type;
