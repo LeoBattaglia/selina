@@ -1,6 +1,7 @@
-//Constants
-import {start} from "repl";
+//Import
+import {Response} from "./response";
 
+//Constants
 const cp = require("child_process");
 const fs = require("fs");
 const milena = require("milena");
@@ -34,18 +35,23 @@ export class Command{
     get callback(){
         return this._callback;
     }
+
     set callback(callback){
         this._callback = callback;
     }
+
     get command():string{
         return this._command;
     }
+
     set command(value:string){
         this._command = value;
     }
+
     get description():string{
         return this._description;
     }
+
     set description(value:string){
         this._description = value;
     }
@@ -66,9 +72,11 @@ export class Server{
 
         commands.push(cmd);
     }
+
     clearCommands():void{
         commands = [];
     }
+
     execute(command:string):void{
         let executed:Boolean = false;
         for(let cmd of commands){
@@ -84,6 +92,7 @@ export class Server{
         p.printLine();
         cli.send("input");
     }
+
     exit():void{
         p.printLine();
         p.printError("Stop Webserver");
@@ -91,6 +100,7 @@ export class Server{
         cli.kill();
         process.exit(0);
     }
+
     help():void{
         p.printLine();
         p.printOption("Commands:")
@@ -98,6 +108,7 @@ export class Server{
             p.print(sys.fillString(cmd.command, 8, " ", false) + cmd.description);
         }
     }
+
     init():void{
         p.printLine();
         p.print("Initialize Webserver " + pkg.version);
@@ -107,6 +118,7 @@ export class Server{
         this.addCommand(new Command("start", "Start Listener", this.startListener));
         this.addCommand(new Command("stop", "Stop Listener", this.stopListener));
     }
+
     setPort(nr:number):void{
         if(nr < 1){
             if(https){
@@ -118,6 +130,7 @@ export class Server{
             port = nr;
         }
     }
+
     start():void{
         p.printLine();
         p.printTitle("Start Webserver " + pkg.version);
@@ -126,10 +139,12 @@ export class Server{
         p.printLine();
         cli.send("input");
     }
+
     startCLI():void{
         cli = cp.fork(__dirname + "/cli");
         cli.on("message", this.execute);
     }
+
     startListener():void{
         p.printLine();
         p.print("Start Listener on Port: " + port);
@@ -139,20 +154,25 @@ export class Server{
                 key: fs.readFileSync("./lib/cert/key.pem"),
                 cert: fs.readFileSync("./lib/cert/cert.pem")
             };
-            server = https.createServer(cert_options, function (req, res) {
-                res.writeHead(200);
-                res.write(response(req));
+            server = https.createServer(cert_options, function(req, res){
+                let r:Response = response(req);
+                res.setHeader("Content-Type", r.type);
+                res.writeHead(r.id);
+                res.write(r._data);
                 res.end("\n");
             }).listen(port);
         }else{
             const http = require("http");
-            server = http.createServer(function (req, res) {
-                res.writeHead(200);
-                res.write(response(req));
+            server = http.createServer(function(req, res){
+                let r:Response = response(req);
+                res.setHeader("Content-Type", r.type);
+                res.writeHead(r.id);
+                res.write(r._data);
                 res.end("\n");
             }).listen(port);
         }
     }
+
     stopListener():void{
         p.printLine();
         p.print("Stop Listener")

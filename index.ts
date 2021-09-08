@@ -1,14 +1,3 @@
-//Constants
-
-//Imports
-//import {startServer} from "./lib/server";
-
-//Start
-//init();
-
-//Functions
-/*function init():void{
-    //startServer();
-}*/
-
+//Exports
 export {Command, Server} from "./lib/server";
+export {Response} from "./lib/response";
