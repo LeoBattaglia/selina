@@ -156,7 +156,7 @@ export class Server{
             };
             server = https.createServer(cert_options, function(req, res){
                 let r:Response = response(req);
-                res.setHeader("Content-Type", r.type);
+                res.setHeader("content-type", r.type);
                 res.writeHead(r.id);
                 res.write(r.data);
                 res.end("\n");
@@ -165,7 +165,7 @@ export class Server{
             const http = require("http");
             server = http.createServer(function(req, res){
                 let r:Response = response(req);
-                res.setHeader("Content-Type", r.type);
+                res.setHeader("content-type", r.type);
                 res.writeHead(r.id);
                 res.write(r.data);
                 res.end("\n");
