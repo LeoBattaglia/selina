@@ -157,7 +157,7 @@ export class Server{
             server = https.createServer(cert_options, function(req, res){
                 let r:Response = response(req);
                 res.setHeader("content-type", r.type);
-                res.writeHead(r.id);
+                res.writeHead(r.status);
                 res.write(r.data);
                 res.end("\n");
             }).listen(port);
@@ -166,7 +166,7 @@ export class Server{
             server = http.createServer(function(req, res){
                 let r:Response = response(req);
                 res.setHeader("content-type", r.type);
-                res.writeHead(r.id);
+                res.writeHead(r.status);
                 res.write(r.data);
                 res.end("\n");
             }).listen(port);
