@@ -158,7 +158,7 @@ export class Server{
                 let r:Response = response(req);
                 res.setHeader("Content-Type", r.type);
                 res.writeHead(r.id);
-                res.write(r._data);
+                res.write(r.data);
                 res.end("\n");
             }).listen(port);
         }else{
@@ -167,7 +167,7 @@ export class Server{
                 let r:Response = response(req);
                 res.setHeader("Content-Type", r.type);
                 res.writeHead(r.id);
-                res.write(r._data);
+                res.write(r.data);
                 res.end("\n");
             }).listen(port);
         }
