@@ -127,7 +127,7 @@ Starts the Listener in HTTP- or HTTPS-Mode on defined Port.
 server.startListener();
 ```
 
-#### startListener()
+#### stopListener()
 Stops the Listener.
 ##### Parameters:
 - NONE

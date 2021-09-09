@@ -1,6 +1,6 @@
 {
   "name": "selina",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Basic Typescript-Webserver",
   "main": "index.js",
   "scripts": {
