@@ -13,7 +13,7 @@ const sys = require("samara");
 
 //Declarations
 let binding:Boolean;
-let binding_module:Binding;
+let binding_module:Binding = new Binding();
 let cli;
 let commands:Command[];
 let https:Boolean;

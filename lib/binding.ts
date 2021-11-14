@@ -2,12 +2,10 @@
 export class Binding{
     //Declarations
     functions:BindingFunction[];
-    //objects:BindingObject[];
 
     //Constructor
     constructor(){
         this.functions = [];
-        //this.objects = [];
     }
 
     //Methods
@@ -23,11 +21,10 @@ export class Binding{
             }
         }
         return false;
-        //this.objects.push(new BindingObject(channel, data));
     }
 }
 
-export class BindingFunction{
+class BindingFunction{
     //Declarations
     channel:string;
     func:Function;
@@ -36,17 +33,5 @@ export class BindingFunction{
     constructor(channel:string, func:Function){
         this.channel = channel;
         this.func = func;
-    }
-}
-
-export class BindingObject{
-    //Declarations
-    channel:string;
-    data:any[];
-
-    //Constructor
-    constructor(channel:string, data:any[]){
-        this.channel = channel;
-        this.data = data;
     }
 }
