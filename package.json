@@ -1,6 +1,6 @@
 {
   "name": "selina",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Basic Typescript-Webserver",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "typescript": "^4.3.2"
   },
   "dependencies": {
-    "milena": "^0.1.3",
-    "samara": "^0.1.14"
+    "milena": "^0.1.8",
+    "samara": "^0.1.26"
   }
 }

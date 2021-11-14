@@ -59,18 +59,17 @@ export class Command{
 
 export class Server{
     //Constructor
-    constructor(https:Boolean, port:number, responseFunction){
-        https = https;
+    constructor(isHTTPS:Boolean, port:number, responseFunction){
+        https = isHTTPS;
         this.setPort(port);
         response = responseFunction;
     }
 
     //Functions
     addCommand(cmd:Command):void{
-
-        //TODO: Check if Command already exists
-
-        commands.push(cmd);
+        if(!this.exists(cmd)){
+            commands.push(cmd);
+        }
     }
 
     clearCommands():void{
@@ -91,6 +90,15 @@ export class Server{
         }
         p.printLine();
         cli.send("input");
+    }
+
+    exists(cmd:Command):Boolean{
+        for(let c of commands){
+            if(c.command === cmd.command){
+                return true;
+            }
+        }
+        return false;
     }
 
     exit():void{
