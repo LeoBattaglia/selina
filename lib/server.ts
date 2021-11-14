@@ -157,11 +157,10 @@ export class Server{
         p.printLine();
         p.print("Start Listener on Port: " + port);
         if(https){
-            console.log("DIR: " + __dirname + " || " + __filename);
             const https = require("https");
             const cert_options = {
-                key: fs.readFileSync("/lib/cert/key.pem"),
-                cert: fs.readFileSync("/lib/cert/cert.pem")
+                key: fs.readFileSync(__dirname + "/cert/key.pem"),
+                cert: fs.readFileSync(__dirname + "/cert/cert.pem")
             };
             server = https.createServer(cert_options, function(req, res){
                 let r:Response = response(req);
