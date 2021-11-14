@@ -159,8 +159,8 @@ export class Server{
         if(https){
             const https = require("https");
             const cert_options = {
-                key: fs.readFileSync("./lib/cert/key.pem"),
-                cert: fs.readFileSync("./lib/cert/cert.pem")
+                key: fs.readFileSync("/lib/cert/key.pem"),
+                cert: fs.readFileSync("/lib/cert/cert.pem")
             };
             server = https.createServer(cert_options, function(req, res){
                 let r:Response = response(req);
