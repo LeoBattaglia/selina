@@ -1,4 +1,6 @@
 //Import
+import {Binding} from "./binding";
+//import {EventEmitter} from 'events';
 import {Response} from "./response";
 
 //Constants
@@ -10,6 +12,8 @@ const pkg = require("../package.json");
 const sys = require("samara");
 
 //Declarations
+let binding:Boolean;
+let binding_module:Binding;
 let cli;
 let commands:Command[];
 let https:Boolean;
@@ -60,12 +64,21 @@ export class Command{
 export class Server{
     //Constructor
     constructor(isHTTPS:Boolean, port:number, responseFunction){
+        //Parameter-Values
         https = isHTTPS;
         this.setPort(port);
         response = responseFunction;
+        //Default-Values
+        this.setBinding(false);
     }
 
     //Functions
+    addBinding(channel:string, callback:Function){
+        if(binding){
+            binding_module.addFunction(channel, callback);
+        }
+    }
+
     addCommand(cmd:Command):void{
         if(!this.exists(cmd)){
             commands.push(cmd);
@@ -125,6 +138,16 @@ export class Server{
         this.addCommand(new Command("help", "Show Commands", this.help));
         this.addCommand(new Command("start", "Start Listener", this.startListener));
         this.addCommand(new Command("stop", "Stop Listener", this.stopListener));
+    }
+
+    send(channel:string, data:any[]):void{
+        if(binding){
+            binding_module.execute(channel, data);
+        }
+    }
+
+    setBinding(b:Boolean):void{
+        binding = b;
     }
 
     setPort(nr:number):void{
