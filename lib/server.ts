@@ -145,7 +145,7 @@ export class Server{
         if(sys.isNull(name)){
             p.printTitle("Start Webserver " + pkg.version);
         }else{
-            p.printTitle("Start " + name + " " + pkg.version);
+            p.printTitle("Start " + name);
         }
         this.help();
         this.startCLI();
