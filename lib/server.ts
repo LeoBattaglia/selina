@@ -140,9 +140,13 @@ export class Server{
         }
     }
 
-    start():void{
+    start(name?:string):void{
         p.printLine();
-        p.printTitle("Start Webserver " + pkg.version);
+        if(sys.isNull(name)){
+            p.printTitle("Start Webserver " + pkg.version);
+        }else{
+            p.printTitle("Start " + name + " " + pkg.version);
+        }
         this.help();
         this.startCLI();
         p.printLine();
