@@ -120,7 +120,7 @@ export class Server{
 
     init():void{
         p.printLine();
-        p.print("Initialize Webserver " + pkg.version);
+        p.print("Initialize Selina-Webserver " + pkg.version);
         this.clearCommands();
         this.addCommand(new Command("exit", "Stop Application", this.exit));
         this.addCommand(new Command("help", "Show Commands", this.help));
