@@ -112,9 +112,16 @@ export class Server{
 
     help():void{
         p.printLine();
+        let len:number = 0;
+        for(let cmd of commands){
+            if(cmd.command.length > len){
+                len = cmd.command.length;
+            }
+        }
+        len += 4;
         p.printOption("Commands:")
         for(let cmd of commands){
-            p.print(sys.fillString(cmd.command, 8, " ", false) + cmd.description);
+            p.print(sys.fillString(cmd.command, len, " ", false) + cmd.description);
         }
     }
 
