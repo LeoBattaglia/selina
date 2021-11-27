@@ -20,9 +20,9 @@ let server;
 //Classes
 export class Command{
     //Declarations
-    _command:string;
-    _description:string;
-    _callback;
+    private _command:string;
+    private _description:string;
+    private _callback;
 
     //Constructor
     constructor(command:string, description:string, callback){
@@ -71,6 +71,7 @@ export class Server{
         if(!this.exists(cmd)){
             commands.push(cmd);
         }
+        this.sortCommands();
     }
 
     clearCommands():void{
@@ -144,6 +145,19 @@ export class Server{
             }
         }else{
             port = nr;
+        }
+    }
+
+    private sortCommands(){
+        for(let i:number = 0; i < commands.length; i++){
+            if(i < commands.length - 1){
+                if(commands[i].command > commands[i + 1].command){
+                    let temp:Command = commands[i];
+                    commands[i] = commands[i + 1];
+                    commands[i + 1] = temp;
+                    i = 0;
+                }
+            }
         }
     }
 
